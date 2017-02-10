@@ -1,0 +1,61 @@
+<app-menu></app-menu>
+<div class="container">
+	<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="campName">Campaign Name:</label>
+		    	<div class="col-sm-10">
+		      		<input type="text" class="form-control" id="campName" name="campName" placeholder="First Name" [(ngModel)]="searchQuery.campaignName" ngModel required>
+		    	</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="startDate">Start Date:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" id="startDate" name="startDate" placeholder="Last Name" [(ngModel)]="searchQuery.campaignStartDateFrom" ngModel required>
+			    </div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="endDate">End Date:</label>
+			    <div class="col-sm-10">
+			      <input type="email" class="form-control" id="endDate" name="endDate" placeholder="Email" [(ngModel)]="searchQuery.campaignEndDateFrom" ngModel required>
+			    </div>
+			</div>
+		</div>
+		<div class="row" style="padding-top=10px;">
+			<div class="col-md-2 col-sm-2 col-xs-4 pull-right">
+	      		<button type="submit" class="btn btn-primary" (click)="searchCampaign()">Search</button>
+	    	</div>
+		</div>
+		<div class="row" style="padding-top:15px;">
+			<div class="table-responsive" >
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Campaign Name</th>
+				        <th>Campaign Description</th>
+				        <th>Start Date</th>
+				        <th>End Date</th>
+				        <th>Action</th>
+				      </tr>
+				    </thead>
+				    <tbody *ngIf="campaignResults?.length > 0">
+				      <tr *ngFor="let campaign of campaignResults">
+				        <td>{{ campaign.campaignName }}</td>
+				        <td>{{ campaign.campaignDescription }}</td>
+				        <td>{{ campaign.campaignStartDate }}</td>
+				        <td>{{ campaign.campaignEndDate }}</td>
+				        <td>
+				        	<a (click)="manageCommunication(campaign.campaignID)" title="Communication Details"><span class="glyphicon glyphicon glyphicon-user"></span></a>&nbsp;
+				        	<a (click)="editCampaign(campaign.campaignID)" title="Edit Campaign Details"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;
+				        	<a (click)="manageEDM(campaign.campaignID)">EDMs</a>
+				        </td>
+				      </tr>
+				    </tbody>
+				    <tbody *ngIf="campaignResults?.length == 0">
+				    	<tr><td>No Records Found</td></tr>
+				    </tbody>
+				  </table>
+			</div>
+		</div>	
+	</div>
+	
+	

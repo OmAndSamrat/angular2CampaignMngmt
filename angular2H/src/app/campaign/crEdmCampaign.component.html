@@ -1,0 +1,22 @@
+<app-menu></app-menu>
+ <form class="form-horizontal" style="paddign-left:20px;">
+ <span class="error">{{errorMsg}}</span>
+ <h3>Create Edm for Campaign {{edm.campaign.campaignName}}</h3>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="edmsubj">Edm Subject:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="edmsubj" name="edmsubj" placeholder="Edm Subjecte" [(ngModel)]="edm.subject" ngModel required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="edm file">Upload File:</label>
+    <div class="col-sm-10">
+      <input type="file" (change)="selectFile($event)">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-primary" (click)="uploadEdmfile()">Create Edm</button>
+    </div>
+  </div>
+</form>

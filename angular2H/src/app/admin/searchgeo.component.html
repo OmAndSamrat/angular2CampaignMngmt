@@ -1,0 +1,17 @@
+<app-menu></app-menu>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Geography Id</th>
+        <th>Geography Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let geo of geos">
+        <td>{{ geo.geographyID }}</td>
+        <td>{{ geo.geographyName }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+<div class="page-header">
+  <h3>Communication Of {{campaign.campaignName}}</h3>
+</div>
+<span class="error">{{errorMsg}}</span>
+<div class="container">
+<div class="row" style="padding-top:15px;">
+
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Designation</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="communications?.length > 0">
+      <tr *ngFor="let comms of communications">
+        <td>{{ comms.contact.contactName }}</td>
+        <td>{{ comms.contact.gender }}</td>
+        <td>{{ comms.contact.email }}</td>
+        <td>{{ comms.contact.designation.designation }}</td>
+        <td>{{ comms.contact.primaryPhone }} / {{ comms.contact.secondaryPhone }}</td>
+        <td><a (click)="deleteContactFromCampaign(comms.communicationID)"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+    </tbody>
+    <tbody *ngIf="campaignResults?.length == 0">
+		<tr><td>No Records Found</td></tr>
+	</tbody>
+  </table>
+</div>
+</div>
+</div>
+	
+	

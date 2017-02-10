@@ -1,0 +1,23 @@
+	<app-menu></app-menu>
+ <form class="form-horizontal" style="paddign-left:20px;">
+ <span>{{errorMsg}}</span>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="desgG">Designation Group:</label>
+    <div class="col-sm-10">
+      	<select [(ngModel)]="designation.designationGroup.designationGroupId" class="form-control" name="desgG" ngModel required>
+  			<option *ngFor="let desgGrs of designationGroups" value= {{desgGrs.designationGroupId}}>{{desgGrs.designationGroup}}</option>
+		</select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="desg">Designation:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="desg" name="desg" placeholder="Organization" [(ngModel)]="designation.designation" ngModel required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" (click)="createDesignation()">Submit</button>
+    </div>
+  </div>
+</form>

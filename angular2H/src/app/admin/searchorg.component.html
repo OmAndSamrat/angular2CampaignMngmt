@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Organization</th>
+        <th>Organization First Name</th>
+        <th>Media</th>
+        <th>Geogrpahy</th>
+        <th>Remarks</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let org of organizations">
+        <td>{{ org.organisation }}</td>
+        <td>{{ org.organisationFirstName }}</td>
+        <td>{{ org.domain.domainName }}</td>
+        <td>{{ org.geography.geographyName }}</td>
+        <td>{{ org.organisationRemark }}</td>
+        <td>
+        	<a (click)="searchContact(org.organisationID)"><span class="glyphicon glyphicon-user"></span></a>
+        	<a (click)="editOrg(org.organisationID)"><span class="glyphicon glyphicon-pencil"></span></a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

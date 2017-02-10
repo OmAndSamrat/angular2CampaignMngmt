@@ -1,0 +1,17 @@
+<app-menu></app-menu>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Domain Name</th>
+        <th>Domain Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let desg of designations">
+        <td>{{ desg.designation }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

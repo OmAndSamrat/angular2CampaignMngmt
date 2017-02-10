@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+<div class="page-header">
+  <h3>Edms Of {{campaign.campaignName}}</h3>
+</div>
+<span class="error">{{errorMsg}}</span>
+<div class="row" style="padding-right:15px;">
+     <button type="button" class="btn btn-primary pull-right" (click)="createEDM(campaign.campaignID)">Create Edm</button>
+</div>
+<div class="container">
+		<div class="row" style="padding-top:15px;">
+			<div class="table-responsive" >
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Campaign Name</th>
+				        <th>Edm Subject</th>
+				        <th>Action</th>
+				      </tr>
+				    </thead>
+				    <tbody *ngIf="edms?.length > 0">
+				      <tr *ngFor="let edm of edms">
+				        <td>{{ edm.campaign.campaignName }}</td>
+				        <td>{{ edm.subject }}</td>
+				        <td>
+				        	<a (click)="editEDM(edm.edmId)"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+				        	<a (click)="tryCampaign(edm.edmId)">Try EDM</a>&nbsp;&nbsp;
+				        	<a (click)="executeCampaign(edm.edmId)" *ngIf="edm.status.statusID > 2">Execute EDM</a>
+				        </td>
+				      </tr>
+				    </tbody>
+				    <tbody *ngIf="campaignResults?.length == 0">
+				    	<tr><td>No Records Found</td></tr>
+				    </tbody>
+				  </table>
+			</div>
+		</div>	
+	</div>
+	
+	

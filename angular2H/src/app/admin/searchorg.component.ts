@@ -1,28 +1,39 @@
 import {Component, OnInit} from "@angular/core";
-import {Router, ActivatedRoute, Params} from '@angular/router';
 import {OrganizationService} from './organization.service'
 import {Organization, Domain, Geography, GeographyRes} from '../../app/common/jsonobj.component'
+import {Router} from '@angular/router';
 @Component ({
-    selector: 'app-crorg',
-    templateUrl: './crorg.component.html'
+    selector: 'app-searorg',
+    templateUrl: './searchorg.component.html'
   })
-  export class CrOrgComponent implements OnInit {
+  export class SearchOrgComponent implements OnInit {
     public errorMsg = '';
-    //public geographies = [];
-    public domains : Domain[];
     public organization = new Organization(new Domain(0,'',''), new GeographyRes(0,''),'','','','');
-    geographies: GeographyRes[];
-    constructor(private service: OrganizationService, private _router: Router, private route: ActivatedRoute) {
-        this.getGeos();
-        this.getDomains();
-        this.route.params.switchMap((params: Params) => this.service.getOrg(+params['id']))
-            .subscribe((org: Organization) => this.organization = org);
+    organizations: Organization[];
+    constructor(private service: OrganizationService, private _router:Router) {
+        this.getOrgs();
     }
     ngOnInit() {
-        console.log("CrOrgComponent Initialised")
+        console.log("Initiallize search component"+this.organizations);
+        
     }
-    getGeos() {
-        this.service.getGeographysRes()
+    getOrgs() {
+        this.service.getOrgs()
+                         .subscribe(
+                           orgs => this.organizations = orgs,
+                           error =>  this.errorMsg = <any>error);
+    }
+    
+    editOrg(orgId) {
+        console.log('Edit org Id '+orgId);
+        this._router.navigate(['/crorg',orgId]);
+    }
+    searchContact(orgId) {
+        console.log('Search for Organization id '+orgId);
+        this._router.navigate(['/searchcontact',orgId]);
+    }
+   /* getGeos() {
+        this.service.getHeroes()
                          .subscribe(
                            heroes => this.geographies = heroes,
                            error =>  this.errorMsg = <any>error);
@@ -32,21 +43,14 @@ import {Organization, Domain, Geography, GeographyRes} from '../../app/common/js
         .subscribe(
           domains => this.domains = domains,
           error =>  this.errorMsg = <any>error);
-    }
+    }*/
     
-    createOrg() {
+    /*createOrg() {
         console.log(this.organization)
         this.service.createOrganizations(this.organization)
-                .subscribe(org => {
-                                    this.organization = org;
-                                    console.log('Service Called Subs start');
-                                    this._router.navigate(['/searchorg']);
-                                    console.log('Service Called subs end');
-                                    
-                                    },
-                error =>  this.errorMsg = <any>error);
-        console.log('Create Org finished');
-    }
+                .subscribe(org => this.organization = org,
+                error =>  this.errorMsg = <any>error);;
+    }*/
     
  }
 
