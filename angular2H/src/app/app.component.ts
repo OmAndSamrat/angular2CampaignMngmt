@@ -10,5 +10,5 @@ import 'rxjs/Rx';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = `Hi Campaign  jncusd uudc sduc I am here`;
+  title = `Hello World`;
 }
