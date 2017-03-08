@@ -37,11 +37,15 @@ export class Gender {
 
 export class SearchQuery {
     constructor(public firstName:string, public lastName:string,
-            public email:string, public designationId:string,
-            public orgId:string, public designationGrpId:string,
+            public email:string, public designationId:number,
+            public orgId:number, public designationGrpId:number,
             public gender:string, public index:string,
-            public count:string, public domainId:string, public geographyId:string)
+            public count:string, public domainId:number, public geographyId:number)
                 {}
+}
+
+export class SearchOrganization {
+    constructor(public orginazationName:string, public domainId:number, public geographyId:number){}
 }
 
 export class Campaign {
@@ -66,6 +70,11 @@ export class SearchCampaign {
 export class Communication {
     constructor(public communicationID:number, public contact:Contact, public campaign:Campaign){}
 }
+
+export class CommunicationTracker {
+    constructor(public communicationTrackerID:number, public status:Status, public communication:Communication, public user:String[], public edm:Edm, public comDateTime:Date){}
+}
+
 
 export class SelectableCommuication {
     constructor(public communication:Communication, public isAssignedToCampaign:boolean){}

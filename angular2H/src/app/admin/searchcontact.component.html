@@ -10,7 +10,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Gender</th>
         <th>Email</th>
         <th>Designation</th>
         <th>Primary Phone Number</th>
@@ -20,7 +19,6 @@
     <tbody>
       <tr *ngFor="let contact of contacts">
         <td>{{ contact.contactName }}</td>
-        <td>{{ contact.gender }}</td>
         <td>{{ contact.email }}</td>
         <td>{{ contact.designation.designation }}</td>
         <td>{{ contact.primaryPhone }}</td>

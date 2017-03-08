@@ -1,7 +1,7 @@
 import {Injectable, Inject} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
-import {Designation, GeographyRes, Domain, Organization, DesignationGroup, Contact} from '../../app/common/jsonobj.component'
+import {Designation, GeographyRes, Domain, Organization, DesignationGroup, Contact, SearchOrganization} from '../../app/common/jsonobj.component'
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -78,11 +78,43 @@ export class OrganizationService {
   
   getOrg(orgid): Observable<Organization> {
       console.log(orgid);
-      if(orgid!=null && orgid != NaN) {
+      console.log('check Orgid value '+orgid);
+      console.log(orgid != NaN);
+      console.log(orgid != 'NaN');
+      console.log(!isNaN(orgid));
+      if(orgid!=null && !isNaN(orgid)) {
           return this.http.get(this.url+'campaign/api/organizations/'+orgid, this.getRequestOption())
           .map(this.extractData)
           .catch(this.handleError);
+      } 
+  }
+  
+  
+  seperator(qs) {
+      if(qs!='') {
+          qs = '&';
+      } else {
+          qs = '?';
       }
+      return qs;
+  }
+  searchOrg(searchOrg: SearchOrganization):Observable<Organization[]> {
+      console.log(' Org Name '+searchOrg.orginazationName);
+      console.log(' Geo Id '+searchOrg.geographyId);
+      console.log(' domain Id '+searchOrg.domainId);
+      let queryString ='';
+      if(searchOrg.orginazationName!='') {
+          queryString=queryString+this.seperator(queryString)+'orgName='+searchOrg.orginazationName;
+      }
+      if(searchOrg.geographyId > 0) {
+          queryString=queryString+this.seperator(queryString)+'geo='+searchOrg.geographyId;
+      }
+      if(searchOrg.domainId > 0) {
+          queryString=queryString+this.seperator(queryString)+'domain='+searchOrg.domainId;
+      }
+      return this.http.get(this.url+'campaign/api/organizations/search'+queryString, this.getRequestOption())
+      .map(this.extractData)
+      .catch(this.handleError);
   }
   
   getDomains(): Observable<Domain[]> {

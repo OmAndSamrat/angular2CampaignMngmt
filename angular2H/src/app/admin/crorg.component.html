@@ -2,7 +2,7 @@
  <form class="form-horizontal" style="paddign-left:20px;">
  <span>{{errorMsg}}</span>
   <div class="form-group">
-    <label class="control-label col-sm-2" for="domain">Domain:</label>
+    <label class="control-label col-sm-2" for="domain">Industry:</label>
     <div class="col-sm-10">
       	<select [(ngModel)]="organization.domain.domainID" class="form-control" name="domain" ngModel required>
   			<option *ngFor="let domain of domains" value= {{domain.domainID}}>{{domain.domainName}}</option>

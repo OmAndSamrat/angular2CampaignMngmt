@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="edm">Edm:</label>
+		    	<div class="col-sm-10">
+		      		<select [(ngModel)]="selectedEdm" class="form-control" name="edm">
+			      		<option value="0" selected>Choose Edm...</option>
+			  			<option *ngFor="let edm of edms" value= {{edm.edmId}}>{{edm.subject}}</option>
+					</select>
+		    	</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top=10px;">
+			<div class="col-md-2 col-sm-2 col-xs-4 pull-right">
+	      		<button type="submit" class="btn btn-primary" (click)="getPrReport()">Progress Report</button>
+	    	</div>
+		</div>
+		<div class="row" style="padding-top:15px;">
+			<div class="table-responsive" >
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Contact Name</th>
+				        <th>Email</th>
+				        <th>Send Flag</th>
+				      </tr>
+				    </thead>
+				    <tbody *ngIf="prReports?.length > 0">
+				      <tr *ngFor="let communicationTrack of prReports">
+				        <td>{{communicationTrack.communication.contact.contactName}}</td>
+				        <td>{{communicationTrack.communication.contact.email}}</td>
+				        <td>{{ communicationTrack.status.statusDesc}}</td>
+				      </tr>
+				    </tbody>
+				    <tbody *ngIf="prReports?.length == 0">
+				    	<tr><td>No Records Found</td></tr>
+				    </tbody>
+				  </table>
+			</div>
+		</div>	
+	</div>
+	
+	

@@ -1,7 +1,7 @@
 import {Http} from '@angular/http';
 import { LoginService, LoginUser } from './login.service';
 import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 //import {LoginService, LoginUser} from './login.service';
 
 
@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 export class LoginComponent {
   public user = new LoginUser('', '');
   public errorMsg = '';
-  constructor(private _loginService: LoginService, private _http: Http, private _router: Router) {
+  constructor(private _loginService: LoginService, private _http: Http, private _router: Router, private route: ActivatedRoute) {
   }
    login() { 
        
@@ -27,7 +27,7 @@ export class LoginComponent {
                                if(user) {
                                    localStorage.setItem('currentUser',JSON.stringify(user));
                                    localStorage.setItem('authKey',authKey);
-                                   this._router.navigate(['./home']);
+                                   this._router.navigate(['./home'],{ relativeTo: this.route });
                                }
                            },
        error =>  this.errorMsg = <any>error);

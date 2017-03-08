@@ -29,11 +29,11 @@ export class MenuComponent {
      }
      return false;
   }
-    logout() {
+  logout() {
         this._loginService.logout(this._http).subscribe();
         localStorage.setItem('currentUser',null);
         localStorage.setItem('authKey',null);
-        this._router.navigate(['/campaign']);
+        this._router.navigate(['']);
     }
 
 

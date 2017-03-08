@@ -22,7 +22,7 @@
 				        <td>{{ edm.campaign.campaignName }}</td>
 				        <td>{{ edm.subject }}</td>
 				        <td>
-				        	<a (click)="editEDM(edm.edmId)"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
+				        	<a (click)="editEDM(edm.edmId)" title="Edit Edm"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;&nbsp;
 				        	<a (click)="tryCampaign(edm.edmId)">Try EDM</a>&nbsp;&nbsp;
 				        	<a (click)="executeCampaign(edm.edmId)" *ngIf="edm.status.statusID > 2">Execute EDM</a>
 				        </td>

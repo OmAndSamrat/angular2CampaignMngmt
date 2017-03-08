@@ -1,7 +1,7 @@
 import {Injectable, Inject} from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/Rx';
-import {Campaign, Organization, Contact, SearchQuery, SearchCampaign, Communication, Edm} from '../../app/common/jsonobj.component'
+import {Campaign, Organization, Contact, SearchQuery, SearchCampaign, Communication, Edm, CommunicationTracker} from '../../app/common/jsonobj.component'
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
@@ -87,13 +87,13 @@ export class ManageCampaignService {
       if(searchQuery.email!='') {
           queryString=queryString+this.seperator(queryString)+'email='+searchQuery.email;
       }
-      if(searchQuery.designationId!='') {
+      if(searchQuery.designationId>0) {
           queryString=queryString+this.seperator(queryString)+'designationId='+searchQuery.designationId;
       }
-      if(searchQuery.orgId!='') {
+      if(searchQuery.orgId>0) {
           queryString=queryString+this.seperator(queryString)+'orgId='+searchQuery.orgId;
       }
-      if(searchQuery.designationGrpId!='') {
+      if(searchQuery.designationGrpId>0) {
           queryString=queryString+this.seperator(queryString)+'designationGrpId='+searchQuery.designationGrpId;
       }
       if(searchQuery.gender!='') {
@@ -152,6 +152,12 @@ export class ManageCampaignService {
     
     getEdms() : Observable<Edm[]> {
         return this.http.get(this.url+'campaign/api/campaigns/1/edms', this.getRequestOption())
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+    
+    getProgresReport(edmId) : Observable<CommunicationTracker[]> {
+        return this.http.get(this.url+'campaign/api/campaigns/'+edmId+'/prreport', this.getRequestOption())
         .map(this.extractData)
         .catch(this.handleError);
     }

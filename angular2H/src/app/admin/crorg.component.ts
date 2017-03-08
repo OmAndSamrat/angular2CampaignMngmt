@@ -15,8 +15,18 @@ import {Organization, Domain, Geography, GeographyRes} from '../../app/common/js
     constructor(private service: OrganizationService, private _router: Router, private route: ActivatedRoute) {
         this.getGeos();
         this.getDomains();
-        this.route.params.switchMap((params: Params) => this.service.getOrg(+params['id']))
-            .subscribe((org: Organization) => this.organization = org);
+        //First check that params Id is there or not. If there then populate Organization. 
+        this.route.params.subscribe((params : Params) => {
+                                            let orgId = +params['id'];
+                                            console.log('Params is '+orgId);
+                                            if(!isNaN(orgId)) {
+                                                this.service.getOrg(+params['id']).subscribe((org: Organization) => this.organization = org);
+                                            }
+                                            
+                                     });
+        
+        /*this.route.params.switchMap((params: Params) => this.service.getOrg(+params['id']))
+            .subscribe((org: Organization) => this.organization = org);*/
     }
     ngOnInit() {
         console.log("CrOrgComponent Initialised")

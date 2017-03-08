@@ -1,76 +1,11 @@
 <app-menu></app-menu>
- <!-- <form class="form-horizontal" style="paddign-left:20px;">
- <span>{{errorMsg}}</span>
- <h3>Search Contact</h3>
- 	<div class="row"> 
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="desgn">Designation:</label>
-		    <div class="col-sm-10">
-		      	<select [(ngModel)]="contact.designation.designationId" class="form-control" name="desgn" ngModel required>
-		  			<option *ngFor="let designation of designations" value= {{designation.designationId}}>{{designation.designation}}</option>
-				</select>
-		    </div>
-		  </div>
-		  
-  	</div>
-  	<div class="row">
-  		<div class="form-group">
-		    <label class="control-label col-sm-2" for="firstN">First Name:</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="orgName" name="firstN" placeholder="First Name" [(ngModel)]="contact.firstName" ngModel required>
-		    </div>
-		  </div>
-		<div class="form-group">
-		    <label class="control-label col-sm-2" for="lastN">Last Name:</label>
-		    <div class="col-sm-10">
-		      <input type="text" class="form-control" id="lastN" name="lastN" placeholder="Last Name" [(ngModel)]="contact.surName" ngModel required>
-		    </div>
-		  </div>
-	</div>
-	<div class="row">
-		<div class="form-group">
-		    <label class="control-label col-sm-2" for="gender">Gender:</label>
-		    <div class="col-sm-10">
-		      	<select [(ngModel)]="contact.gender" name="gender" class="form-control">
-		  			<option *ngFor="let gender of genders" value= {{gender.gender}}>{{gender.genderLabel}}</option>
-				</select>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="email">Email:</label>
-		    <div class="col-sm-10">
-		      <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="contact.email" ngModel required>
-		    </div>
-		  </div>
-		  
-	</div>
-	<div class="row">
-		<div class="form-group">
-		    <label class="control-label col-sm-2" for="prphone">Primary Phone Number:</label>
-		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="prphone" name="prphone" placeholder="Primary Phone Number" [(ngModel)]="contact.primaryPhone" ngModel required>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="secphone">Alternate Phone Number:</label>
-		    <div class="col-sm-10">
-		      <input type="number" class="form-control" id="secphone" name="secphone" placeholder="Alternate Phone Numbe" [(ngModel)]="contact.secondaryPhone" ngModel required>
-		    </div>
-		  </div>
-  	</div>
-	  <div class="form-group">
-	    <div class="col-sm-offset-2 col-sm-10">
-	      <button type="submit" class="btn btn-primary" (click)="createContact()">Search</button>
-	    </div>
-	  </div>
-</form>
- -->
 <div class="container">
 	<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label class="control-label col-sm-2" for="desgn">Designation:</label>
 			    <div class="col-sm-10">
 			      	<select [(ngModel)]="searchQuery.designationId" class="form-control" name="desgn" ngModel required>
+			      		<option value="0" selected>Choose Designation...</option>
 			  			<option *ngFor="let designation of designations" value= {{designation.designationId}}>{{designation.designation}}</option>
 					</select>
 			    </div>
@@ -79,6 +14,7 @@
 				<label class="control-label col-sm-2" for="desgn">Designation Group:</label>
 			    <div class="col-sm-10">
 			      	<select [(ngModel)]="searchQuery.designationGroupId" class="form-control" name="desgG" ngModel required>
+			      		<option value="0" selected>Choose Designation Group...</option>
   						<option *ngFor="let desgGrs of designationGroups" value= {{desgGrs.designationGroupId}}>{{desgGrs.designationGroup}}</option>
 					</select>
 			    </div>
@@ -87,14 +23,16 @@
 				<label class="control-label col-sm-2" for="org">Organization:</label>
 			    <div class="col-sm-10">
 			      	<select [(ngModel)]="searchQuery.orgId" class="form-control" name="org" ngModel required>
+			      		<option value="0" selected>Choose Organization...</option>
   						<option *ngFor="let org of organizations" value= {{org.organisationID}}>{{org.organisation}}</option>
 					</select>
 			    </div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<label class="control-label col-sm-2" for="domain">Domain:</label>
+				<label class="control-label col-sm-2" for="domain">Industry:</label>
 			    <div class="col-sm-10">
 			      	<select [(ngModel)]="searchQuery.domainID" class="form-control" name="domain" ngModel required>
+			      		<option value="0" selected>Choose Industry:...</option>
   						<option *ngFor="let domain of domains" value= {{domain.domainID}}>{{domain.domainName}}</option>
 					</select>
 			    </div>
@@ -112,11 +50,11 @@
 			    </div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
-				<label class="control-label col-sm-2" for="gender">Gender:</label>
+				<label class="control-label col-sm-2" for="gender">Geography:</label>
 			    <div class="col-sm-10">
-			      	<select [(ngModel)]="searchQuery.gender" name="gender" class="form-control">
-			      		<!-- <option value="0" disabled selected>Choose Geography...</option> -->
-			  			<option *ngFor="let gender of genders" value= {{gender.gender}}>{{gender.genderLabel}}</option>
+					<select [(ngModel)]="searchQuery.geographyId" name="geography" class="form-control">
+		      			<option value="0" selected>Choose Geography...</option>
+		  				<option *ngFor="let geo of geographies" value= {{geo.geographyID}}>{{geo.geographyName}}</option>
 					</select>
 			    </div>
 			</div>
@@ -139,7 +77,7 @@
 				      <tr>
 				      	<td>Option</td>
 				        <th>Name</th>
-				        <th>Gender</th>
+				        <th>Geography</th>
 				        <th>Email</th>
 				        <th>Designation</th>
 				        <th>Phone Number</th>
@@ -150,11 +88,11 @@
 				      <tr *ngFor="let selectableCommunication of selectableCommunications">
 				      	<td><input type="checkbox" name="options" value="{{selectableCommunication.communication.contact.campaignID}}" [(ngModel)]="selectableCommunication.isAssignedToCampaign"/></td>
 				        <td>{{ selectableCommunication.communication.contact.contactName }}</td>
-				        <td>{{ selectableCommunication.communication.contact.gender }}</td>
+				        <td>{{ selectableCommunication.communication.contact.organization.geography?.geographyName}}</td>
 				        <td>{{ selectableCommunication.communication.contact.email }}</td>
 				        <td>{{ selectableCommunication.communication.contact.designation.designation }}</td>
 				        <td>{{ selectableCommunication.communication.contact.primaryPhone }}/{{ selectableCommunication.communication.contact.secondaryPhone }}</td>
-				        <td>{{ selectableCommunication.communication.contact.organization.organization }}</td>
+				        <td>{{ selectableCommunication.communication.contact.organization.organisation }}</td>
 				      </tr>
 				    </tbody>
 				    <tbody *ngIf="selectableCommunications?.length == 0">

@@ -1,28 +1,61 @@
 <app-menu></app-menu>
-<div class="table-responsive">
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Organization</th>
-        <th>Organization First Name</th>
-        <th>Media</th>
-        <th>Geogrpahy</th>
-        <th>Remarks</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let org of organizations">
-        <td>{{ org.organisation }}</td>
-        <td>{{ org.organisationFirstName }}</td>
-        <td>{{ org.domain.domainName }}</td>
-        <td>{{ org.geography.geographyName }}</td>
-        <td>{{ org.organisationRemark }}</td>
-        <td>
-        	<a (click)="searchContact(org.organisationID)"><span class="glyphicon glyphicon-user"></span></a>
-        	<a (click)="editOrg(org.organisationID)"><span class="glyphicon glyphicon-pencil"></span></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="orgName">Organization Name:</label>
+		    	<div class="col-sm-10">
+		      		<input type="text" class="form-control" id="campName" name="orgName" placeholder="Organization Name" [(ngModel)]="searchOrganization.orginazationName" ngModel required>
+		    	</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="domain">Industry:</label>
+			    <div class="col-sm-10">
+			      	<select [(ngModel)]="searchOrganization.domainId" class="form-control" name="domain">
+			      		<option value="0" selected>Choose Domain...</option>
+  						<option *ngFor="let domain of domains" value= {{domain.domainID}}>{{domain.domainName}}</option>
+					</select>
+			    </div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12" style="padding-top: 10px;">
+				<label class="control-label col-sm-2" for="endDate">Geography:</label>
+			    <div class="col-sm-10">
+			      	<select [(ngModel)]="searchOrganization.geographyId" name="geography" class="form-control">
+		      			<option value="0" selected>Choose Geography...</option>
+		  				<option *ngFor="let geo of geographies" value= {{geo.geographyID}}>{{geo.geographyName}}</option>
+					</select>
+			    </div>
+			</div>
+		</div>
+		<div class="row" style="padding-top:10px;">
+			<div class="col-md-2 col-sm-2 col-xs-4 pull-right">
+	      		<button type="submit" class="btn btn-primary" (click)="searchOrg()">Search</button>
+	    	</div>
+		</div>
+	<div class="table-responsive">
+	<table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Organization</th>
+	        <th>Organization First Name</th>
+	        <th>Industry</th>
+	        <th>Geogrpahy</th>
+	        <th>Remarks</th>
+	        <th>Action</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr *ngFor="let org of organizations">
+	        <td>{{ org.organisation }}</td>
+	        <td>{{ org.organisationFirstName }}</td>
+	        <td>{{ org.domain?.domainName }}</td>
+	        <td>{{ org.geography?.geographyName }}</td>
+	        <td>{{ org.organisationRemark }}</td>
+	        <td>
+	        	<a (click)="searchContact(org.organisationID)" title="Contacts"><span class="glyphicon glyphicon-user"></span></a>
+	        	<a (click)="editOrg(org.organisationID)" title="Edit Organization"><span class="glyphicon glyphicon-pencil"></span></a>
+	        </td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
 </div>

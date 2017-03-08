@@ -19,7 +19,7 @@ const appRoutes:Routes = [{path:'', component : LoginComponent},{path:'campaign'
     HttpModule,
     HomeModule,
     CampaignModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,{useHash: true})
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

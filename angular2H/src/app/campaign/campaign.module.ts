@@ -13,6 +13,7 @@ import {ExecuteCampignComponent} from './executecampaign.component';
 import {ManageEdmComponent} from './manageedm.component';
 import {EditEdmCampaignComponent} from './editedm.component';
 import {AssignedContactComponent} from './assignedcontact.component';
+import {EdmProgressComponent} from './edmprogress.component';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import {AssignedContactComponent} from './assignedcontact.component';
   ],
   declarations: [SearchCampaignResultComponent, SearchCampaignContactComponent, ExecuteCampignComponent,
                  TryCampignComponent, CrCampaignComponent, CrEdmCampaignComponent, ManageEdmComponent,
-                 AssignedContactComponent, EditEdmCampaignComponent],
+                 AssignedContactComponent, EditEdmCampaignComponent, EdmProgressComponent],
   providers: [ManageCampaignService]
 })
 export class CampaignModule {}

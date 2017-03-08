@@ -63,8 +63,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Campaign <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a routerLink="/crcampaign">Create Campaign</a></li>
-            <li><a routerLink="/searchCampaignResult">Edit Campaign</a></li>
+            <li><a routerLink="/searchCampaignResult">Search Campaign/Edm</a></li>
           </ul>
+        </li>
+        <li *ngIf="hasUserRole('IS,MARKETING')">
+          <a routerLink="/progressreport">EDM Progress</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

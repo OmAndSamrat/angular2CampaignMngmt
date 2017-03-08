@@ -1,0 +1,39 @@
+<app-menu></app-menu>
+<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<label class="control-label col-sm-2" for="campName">Edm:</label>
+		    	<div class="col-sm-10">
+		      		<input type="text" class="form-control" id="campName" name="campName" placeholder="First Name" [(ngModel)]="searchQuery.campaignName" ngModel required>
+		    	</div>
+			</div>
+		</div>
+		<div class="row" style="padding-top=10px;">
+			<div class="col-md-2 col-sm-2 col-xs-4 pull-right">
+	      		<button type="submit" class="btn btn-primary" (click)="searchCampaign()">Progress Report</button>
+	    	</div>
+		</div>
+		<div class="row" style="padding-top:15px;">
+			<div class="table-responsive" >
+				<table class="table table-striped">
+				    <thead>
+				      <tr>
+				        <th>Contact Name</th>
+				        <th>Send Flag</th>
+				      </tr>
+				    </thead>
+				    <tbody *ngIf="campaignResults?.length > 0">
+				      <tr *ngFor="let campaign of campaignResults">
+				        <td>{{ campaign.campaignName }}</td>
+				        <td>{{ campaign.campaignDescription }}</td>
+				      </tr>
+				    </tbody>
+				    <tbody *ngIf="campaignResults?.length == 0">
+				    	<tr><td>No Records Found</td></tr>
+				    </tbody>
+				  </table>
+			</div>
+		</div>	
+	</div>
+	
+	

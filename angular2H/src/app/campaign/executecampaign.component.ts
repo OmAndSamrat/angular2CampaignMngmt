@@ -28,7 +28,7 @@ import {Campaign, Status, Edm} from '../../app/common/jsonobj.component'
         this.service.executeCampaign(this.edm.campaign.campaignID, this.edm.edmId)
                 .subscribe(campR => {
                                     console.log('Service Called Subs start');
-                                    this.errorMsg = 'Exection is in progress.';
+                                    this.errorMsg = 'Execution is in progress. To check progress Click Progrss tab.';
                                     console.log('Service Called subs end');
                                     },
                 error =>  this.errorMsg = <any>error);

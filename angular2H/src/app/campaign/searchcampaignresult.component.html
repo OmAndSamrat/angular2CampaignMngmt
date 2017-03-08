@@ -1,6 +1,6 @@
 <app-menu></app-menu>
 <div class="container">
-	<div class="row">
+		<div class="row">
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label class="control-label col-sm-2" for="campName">Campaign Name:</label>
 		    	<div class="col-sm-10">
@@ -10,13 +10,13 @@
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label class="control-label col-sm-2" for="startDate">Start Date:</label>
 			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="startDate" name="startDate" placeholder="Last Name" [(ngModel)]="searchQuery.campaignStartDateFrom" ngModel required>
+			      <input type="text" class="form-control" id="startDate" name="startDate" placeholder="Start Date in MM DD YYYY format" [(ngModel)]="searchQuery.campaignStartDateFrom" ngModel required>
 			    </div>
 			</div>
 			<div class="col-md-6 col-sm-6 col-xs-12">
 				<label class="control-label col-sm-2" for="endDate">End Date:</label>
 			    <div class="col-sm-10">
-			      <input type="email" class="form-control" id="endDate" name="endDate" placeholder="Email" [(ngModel)]="searchQuery.campaignEndDateFrom" ngModel required>
+			      <input type="text" class="form-control" id="endDate" name="endDate" placeholder="End date in MM DD YYYY" [(ngModel)]="searchQuery.campaignEndDateFrom" ngModel required>
 			    </div>
 			</div>
 		</div>

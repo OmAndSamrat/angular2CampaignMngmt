@@ -11,7 +11,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Gender</th>
         <th>Email</th>
         <th>Designation</th>
         <th>Phone Number</th>
@@ -21,7 +20,6 @@
     <tbody *ngIf="communications?.length > 0">
       <tr *ngFor="let comms of communications">
         <td>{{ comms.contact.contactName }}</td>
-        <td>{{ comms.contact.gender }}</td>
         <td>{{ comms.contact.email }}</td>
         <td>{{ comms.contact.designation.designation }}</td>
         <td>{{ comms.contact.primaryPhone }} / {{ comms.contact.secondaryPhone }}</td>

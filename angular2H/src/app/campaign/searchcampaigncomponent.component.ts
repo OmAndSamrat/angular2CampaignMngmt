@@ -23,7 +23,7 @@ export class SearchCampaignContactComponent implements OnInit {
     
     public selectableCommunications : SelectableCommuication[] = [];
     
-    public searchQuery = new SearchQuery("","","","","","","","","","","");
+    public searchQuery = new SearchQuery("","","",0,0,0,"","","",0,0);
     public organization = new Organization(new Domain(0,'',''), new GeographyRes(0,''),'','','','');
     public contact = new Contact(null, "", "", "", "", "", new Designation(0,'', new DesignationGroup(null, "")), this.organization,'','');
     public selectedCampaign  = new Campaign(1, new Status(null,""),"","","", "");
@@ -84,6 +84,7 @@ export class SearchCampaignContactComponent implements OnInit {
     }
     
     searchContact() {
+        this.selectableCommunications = [];
         console.log(this.searchQuery)
         this.manageService.searchContacts(this.searchQuery, this.selectedCampaign.campaignID)
                          .subscribe(

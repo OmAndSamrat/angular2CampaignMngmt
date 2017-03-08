@@ -12,6 +12,7 @@ import {TryCampignComponent} from './trycampaign.component';
 import {ExecuteCampignComponent} from './executecampaign.component';
 import {ManageEdmComponent} from './manageedm.component';
 import {AssignedContactComponent} from './assignedcontact.component';
+import {EdmProgressComponent} from './edmprogress.component';
 
 //import { AuthGuard }                from '../auth-guard.service';
 
@@ -27,6 +28,7 @@ const campaignRoutes: Routes = [
   {path: 'searchCampaignResult', component: SearchCampaignResultComponent },
   {path: 'editcampaign/:id', component: EditEdmCampaignComponent},
   {path: 'assignedContact/:id', component: AssignedContactComponent},
+  {path: 'progressreport', component: EdmProgressComponent},
     {path: 'home',
     component: HomeComponent,
     children: [
