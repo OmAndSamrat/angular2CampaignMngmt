@@ -20,6 +20,7 @@ export class SearchCampaignContactComponent implements OnInit {
     public organizations:Organization[];
     public contactResults:Contact[];
     public communications : Communication[];
+    public isAllChecked : boolean = false;
     
     public selectableCommunications : SelectableCommuication[] = [];
     
@@ -117,6 +118,12 @@ export class SearchCampaignContactComponent implements OnInit {
                                                  this._router.navigate(['/searchCampaignResult']);
                                               },
                            error =>  this.errorMsg = <any>error);
+    }
+    checkUncheckALL() {
+        console.log('Check unchek checked '+this.isAllChecked);
+        for(let selectComm of this.selectableCommunications) {
+            selectComm.isAssignedToCampaign = this.isAllChecked;
+        }
     }
     
     /*searchContact()() {

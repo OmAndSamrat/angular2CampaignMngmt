@@ -75,7 +75,11 @@
 				<table class="table table-striped">
 				    <thead>
 				      <tr>
-				      	<td>Option</td>
+				      	<td>
+				      		<input type="checkbox" 
+				      		name="options" [(ngModel)]="isAllChecked"
+				      		(change)="checkUncheckALL()"/>
+				      	</td>
 				        <th>Name</th>
 				        <th>Geography</th>
 				        <th>Email</th>
