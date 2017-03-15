@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+<div class="container">
+		<div class="row">
+			<div class="form-group">
+			    <label class="control-label col-sm-4" for="edmsender">Sender Email:</label>
+			    <div class="col-sm-8">
+			      <input type="text" class="form-control" id="edmsender" name="edmsender" placeholder="Sender Email" [(ngModel)]="senderEmail" ngModel required>
+			    </div>
+  			</div>
+  			<div class="form-group">
+			    <label class="control-label col-sm-4" for="senderPass">Sender Password:</label>
+			    <div class="col-sm-8">
+			      <input type="password" class="form-control" id="senderPass" name="senderPass" placeholder="Sender Password" [(ngModel)]="senderPassword" ngModel required>
+			    </div>
+	  		</div>
+  			<div class="form-group">
+				<label class="control-label col-sm-4" for="edm">Edm:</label>
+		    	<div class="col-sm-8">
+		      		<select [(ngModel)]="selectedEdm" class="form-control" name="edm">
+			      		<option value="0" selected>Choose Edm...</option>
+			  			<option *ngFor="let edm of edms" value= {{edm.edmId}}>{{edm.subject}}</option>
+					</select>
+		    	</div>
+			</div>
+			<div class="form-group">
+			    <div class="col-sm-offset-8 col-sm-4">
+			      <button type="button" class="btn btn-primary" (click)="updateEdm()">Assign Sender</button>
+			    </div>
+  			</div>
+		</div>
+</div>
+	
+	

@@ -10,7 +10,7 @@ import {Campaign, Status, Edm} from '../../app/common/jsonobj.component'
     public errorMsg = '';
     public file;
     public campaign = new Campaign(null, new Status(null, ""), "", "", "", "");
-    public edm = new Edm(null, this.campaign, "",new Status(null, ""));
+    public edm = new Edm(null, this.campaign, "",new Status(null, ""),"","");
     constructor(private service: ManageCampaignService, private _router: Router, private route: ActivatedRoute) {
         this.route.params
         .switchMap((params: Params) => this.service.getEdm(+params['id']))
@@ -27,7 +27,7 @@ import {Campaign, Status, Edm} from '../../app/common/jsonobj.component'
     }
     
     uploadEdmfile() {
-        this.service.updateEdmFile(this.file, this.edm.subject).subscribe(
+        this.service.updateEdmFile(this.edm.edmId,this.file, this.edm.subject).subscribe(
                 edmid => {
                         console.log('success');
                         this._router.navigate(['/trycampaign',edmid]);

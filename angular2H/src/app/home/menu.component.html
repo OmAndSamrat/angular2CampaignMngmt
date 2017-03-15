@@ -67,6 +67,9 @@
           </ul>
         </li>
         <li *ngIf="hasUserRole('IS,MARKETING')">
+          <a routerLink="/assignsender">Assign Edm Sender</a>
+        </li>
+        <li *ngIf="hasUserRole('IS,MARKETING')">
           <a routerLink="/progressreport">EDM Progress</a>
         </li>
       </ul>

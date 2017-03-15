@@ -156,6 +156,12 @@ export class ManageCampaignService {
         .catch(this.handleError);
     }
     
+    updateEdm(edm:Edm) : Observable<Edm[]> {
+        return this.http.post(this.url+'campaign/api/campaigns/edmupdate', edm,this.getRequestOption())
+        .map(this.extractData)
+        .catch(this.handleError);
+    }
+    
     getProgresReport(edmId) : Observable<CommunicationTracker[]> {
         return this.http.get(this.url+'campaign/api/campaigns/'+edmId+'/prreport', this.getRequestOption())
         .map(this.extractData)
@@ -185,7 +191,7 @@ export class ManageCampaignService {
         .catch(this.handleError);
     }
     
-    updateEdmFile(file: File, subject:string):Observable<string> {
+    updateEdmFile(edmId, file: File, subject:string):Observable<string> {
             let formData:FormData = new FormData();
             formData.append('uploadFile', file, file.name);
             formData.append('subject', subject);
@@ -194,7 +200,7 @@ export class ManageCampaignService {
             headers.append("authKey", authKey);
             //headers.append('Content-Type', 'multipart/form-data; boundry');
             let options = new RequestOptions({ headers: headers });
-            return this.http.put(this.url+'campaign/api/campaigns/1/edms/1', formData, options)
+            return this.http.put(this.url+'campaign/api/campaigns/1/edms/'+edmId, formData, options)
                 .map(this.extractData)
                 .catch(this.handleError)
     }

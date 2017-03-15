@@ -81,7 +81,7 @@ export class SelectableCommuication {
 }
 
 export class Edm {
-    constructor (public edmId:number,public campaign:Campaign,public subject:string, public status: Status){}
+    constructor (public edmId:number,public campaign:Campaign,public subject:string, public status: Status, public senderEmail:string, public senderPassword:string){}
 }
 
 

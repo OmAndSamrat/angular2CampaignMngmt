@@ -2,7 +2,6 @@ import {Http} from '@angular/http';
 import { LoginService, LoginUser } from './login.service';
 import {Component} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-//import {LoginService, LoginUser} from './login.service';
 
 
 @Component ({
